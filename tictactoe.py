@@ -39,7 +39,6 @@ class Tictactoe:
         self.__p2 = Player()
         self.__cpu = Cpu()
         self.__board = Board()
-        self.__stats = Stats()
         self.__players = [self.__p1]
         self.__position = 0
         self.__game_mode = ""
@@ -60,7 +59,7 @@ class Tictactoe:
                     self.__game_mode = "cpu"
                     self.__play()
                 elif option == 3:
-                    self.__stats.show_player_stats()
+                    pass
                 elif option == 4:
                     break
                 else:
