@@ -41,9 +41,9 @@ class Tictactoe:
         self.__board = Board()
         self.__players = [self.__p1]
         self.__position = 0
-        self.__game_mode = ""
         self.__correct_names = False
         self.__correct_symbols = False
+        self.__restart = False
 
     def start(self):
         while True:
@@ -53,11 +53,9 @@ class Tictactoe:
                 option = int(input("Choose an option: "))
 
                 if option == 1:
-                    self.__game_mode = "player"
-                    self.__play()
+                    self.__play_vs("player")
                 elif option == 2:
-                    self.__game_mode = "cpu"
-                    self.__play()
+                    self.__play_vs("cpu")
                 elif option == 3:
                     pass
                 elif option == 4:
@@ -178,10 +176,8 @@ class Tictactoe:
                 print("No option available!")
                 time.sleep(1.10)
 
-    def __play(self):
-        restart = False
-
-        if self.__game_mode == "player" and self.__correct_settings():
+    def __play_vs(self, game_mode):
+        if game_mode == "player" and self.__correct_settings():
             self.__players.append(self.__p2)
             while True:
                 self.__clear_screen()
@@ -192,22 +188,18 @@ class Tictactoe:
 
                 if self.__game_finished():
                     if self.__play_again():
-                        restart = True
+                        self.__restart = True
                     else:
-                        self.__stats.write_stats(self.__p1.get_name(), self.__p1.get_wins(), self.__p1.draws, self.__p2.get_name(), self.__p2.get_wins())
                         self.__reset_attributes()
                         self.__players.remove(self.__p2)
                         break
 
-                if self.__position == 0:
-                    self.__position = 1
-                else:
-                    self.__position = 0
+                self.__position = 1 if self.__position == 0 else 0
 
-                if restart:
+                if self.__restart:
                     self.__position = 0
-                    restart = False
-        elif self.__game_mode == "cpu":
+                    self.__restart = False
+        elif game_mode == "cpu":
             pass
 
     def __clear_screen(self):
