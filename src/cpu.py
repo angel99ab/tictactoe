@@ -5,27 +5,27 @@ class Cpu:
     draws = 0
 
     def __init__(self):
-        self.__name = "CPU"
-        self.__symbol = ""
-        self.__wins = 0
+        self._name = "CPU"
+        self._symbol = ""
+        self._wins = 0
 
     def get_name(self):
-        return self.__name
+        return self._name
 
     def set_name(self, name):
-        self.__name = name
+        self._name = name
 
     def get_symbol(self):
-        return self.__symbol
+        return self._symbol
 
     def set_symbol(self, symbol):
-        self.__symbol = symbol
+        self._symbol = symbol
 
     def get_wins(self):
-        return self.__wins
+        return self._wins
 
     def set_wins(self, wins):
-        self.__wins = wins
+        self._wins = wins
     
     def get_random_pos(self):
         return randint(0, 8)

@@ -3,30 +3,30 @@ class Player:
     draws = 0
 
     def __init__(self):
-        self.__name = ""
-        self.__symbol = ""
-        self.__wins = 0
+        self._name = ""
+        self._symbol = ""
+        self._wins = 0
 
     def get_name(self):
-        return self.__name
+        return self._name
 
     def set_name(self, name):
-        self.__name = name
+        self._name = name
 
     def get_symbol(self):
-        return self.__symbol
+        return self._symbol
 
     def set_symbol(self, symbol):
-        self.__symbol = symbol
+        self._symbol = symbol
 
     def get_wins(self):
-        return self.__wins
+        return self._wins
 
     def set_wins(self, wins):
-        self.__wins = wins
+        self._wins = wins
 
     def is_valid_name(self):
-        if len(self.__name) == 0 or len(self.__name) > 11:
+        if len(self._name) == 0 or len(self._name) > 11:
             return False
         
         return True
