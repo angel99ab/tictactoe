@@ -6,33 +6,6 @@ from cpu import Cpu
 
 
 class Tictactoe:
-    """
-    Class to create a tictactoe game
-
-    Object's attributes
-    -------------------
-        __p1 : Player           User playing as player 1      
-        __p2 : Player           User playing as player 2
-        __board : Board         Board of the game
-        __stats : Stats         Write stats of the players
-        __players : list[obj]   List with the available players
-        __position : int        Player's position
-
-    Methods
-    -------
-        start()               Starts the game  
-        __show_menu(option)   Prints the menu selected by option(str)           
-        __settings()          Prints a menu with different options
-        __choose_board()      Asks for the number of board to select
-        __choose_names()      Asks the players their names
-        __choose_symbols()    Asks the players what symbols they want   
-        __play()              Play the game with all configured settings 
-        __clear_screen()      Cleans the screen
-        __show_info()         Prints the stats of the players
-        __game_finished()     Checks if some player won or is a tie
-        __play_again()        New match with the same players
-        __reset_stats()       Sets to 0 the wins and draws of players 
-    """
 
     def __init__(self):
         self.__p1 = Player()
