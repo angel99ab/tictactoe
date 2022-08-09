@@ -2,7 +2,6 @@ import os
 import time
 from board import Board
 from player import Player
-from cpu import Cpu
 
 
 class Tictactoe:
