@@ -2,16 +2,9 @@ class Player:
 
     draws = 0
 
-    def __init__(self):
-        self._name = ""
-        self._symbol = ""
+    def __init__(self, symbol):
+        self._symbol = symbol
         self._wins = 0
-
-    def get_name(self):
-        return self._name
-
-    def set_name(self, name):
-        self._name = name
 
     def get_symbol(self):
         return self._symbol
