@@ -10,7 +10,6 @@ class Tictactoe:
     def __init__(self):
         self._p1 = Player()
         self._p2 = Player()
-        self._cpu = Cpu()
         self._board = Board()
         self._players = [self._p1]
         self._position = 0
@@ -172,8 +171,6 @@ class Tictactoe:
                 if self._restart:
                     self._position = 0
                     self._restart = False
-        elif game_mode == "cpu":
-            pass
 
     def _clear_screen(self):
         os.system("cls") if os.name == "nt" else os.system("clear")
