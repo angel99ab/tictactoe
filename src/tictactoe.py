@@ -7,12 +7,8 @@ from player import Player
 class Tictactoe:
 
     def __init__(self):
-        self._p1 = Player("X")
-        self._p2 = Player("O")
+        self._players = [Player("X"), Player("O")]
         self._board = Board()
-        self._players = [self._p1, self._p2]
-        self._position = 0
-        self._restart = False
 
     def start(self):
         while True:
@@ -44,45 +40,43 @@ class Tictactoe:
         print("   4) Exit\n")
 
     def _play(self):
+        position = 0
+
         while True:
             self._clear_screen()
             print(f"----- Player vs Player -----\n")
             self._board.display()
-            self._show_info()
-            self._board.update_pos(self._players[self._position].get_symbol())
+            self._show_info(position)
+            self._board.update_pos(self._players[position].get_symbol())
 
-            if self._game_finished():
+            if self._game_finished(position):
                 if self._play_again():
-                    self._restart = True
+                    position = 0
                 else:
                     self._reset_attributes()
                     break
 
-            self._position = 1 if self._position == 0 else 0
-
-            if self._restart:
-                self._position = 0
-                self._restart = False
+            position = 1 if position == 0 else 0
 
     def _clear_screen(self):
         os.system("cls") if os.name == "nt" else os.system("clear")
             
-    def _show_info(self):
+    def _show_info(self, player_position):
         print(f"   Player {self._players[0].get_symbol()}: {self._players[0].get_wins()} wins")
         print(f"   Player {self._players[1].get_symbol()}: {self._players[1].get_wins()} wins")
         print(f"   Draws: {self._players[0].draws}\n")
-        print(f"Turn of player {self._players[self._position].get_symbol()}")
+        print(f"Turn of player {self._players[player_position].get_symbol()}")
 
-    def _game_finished(self):
-        p_symbol = self._players[self._position].get_symbol()
-        p_wins = self._players[self._position].get_wins()
+    def _game_finished(self, player_position):
+        p_symbol = self._players[player_position].get_symbol()
+        p_wins = self._players[player_position].get_wins()
         
         if self._board.check_winner(p_symbol):
             os.system("cls")
             print("----- Player vs Player -----\n")
             self._board.display()
             print(f"Player {p_symbol} wins!")
-            self._players[self._position].set_wins(p_wins + 1)
+            self._players[player_position].set_wins(p_wins + 1)
             self._board.reset()
             return True
         if self._board.is_full():
@@ -90,7 +84,7 @@ class Tictactoe:
             print(f"----- Player vs Player -----\n")
             self._board.display()
             print("It's a draw!")
-            self._p1.draws += 1
+            self._players[0].draws += 1
             self._board.reset()
             return True
 
@@ -108,6 +102,8 @@ class Tictactoe:
                 return False
     
     def _reset_attributes(self):
-        self._p1.set_wins(0)
-        self._p1.draws = 0
-        self._p2.set_wins(0)
+        for player in self._players:
+            player.set_wins(0)
+
+        self._players[0].draws = 0
+        
