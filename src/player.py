@@ -17,9 +17,3 @@ class Player:
 
     def set_wins(self, wins):
         self._wins = wins
-
-    def is_valid_name(self):
-        if len(self._name) == 0 or len(self._name) > 11:
-            return False
-        
-        return True
