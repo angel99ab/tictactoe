@@ -75,7 +75,7 @@ class Tictactoe:
         p_wins = self._players[player_position].get_wins()
         
         if self._board.check_winner(p_symbol):
-            os.system("cls")
+            self._clear_screen()
             print("----- Player vs Player -----\n")
             self._board.display()
             print(f"Player {p_symbol} wins!")
@@ -83,7 +83,7 @@ class Tictactoe:
             self._board.reset()
             return True
         if self._board.is_full():
-            os.system("cls")
+            self._clear_screen()
             print(f"----- Player vs Player -----\n")
             self._board.display()
             print("It's a draw!")
