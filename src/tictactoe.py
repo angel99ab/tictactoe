@@ -6,8 +6,11 @@ from player import Player
 
 class Tictactoe:
 
+    X_SYMBOL = "X"
+    O_SYMBOL = "O"
+
     def __init__(self):
-        self._players = [Player("X"), Player("O")]
+        self._players = [Player(self.X_SYMBOL), Player(self.O_SYMBOL)]
         self._board = Board()
 
     def start(self):
