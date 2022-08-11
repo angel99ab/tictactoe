@@ -58,8 +58,8 @@ class Tictactoe:
                 else:
                     self._reset_attributes()
                     break
-
-            position = 1 if position == 0 else 0
+            else:
+                position = 1 if position == 0 else 0
 
     def _clear_screen(self):
         os.system("cls") if os.name == "nt" else os.system("clear")
