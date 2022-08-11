@@ -25,8 +25,6 @@ class Tictactoe:
                 elif option == 2:
                     pass
                 elif option == 3:
-                    pass
-                elif option == 4:
                     break
                 else:
                     print("Numbers between 1-4!")
@@ -39,8 +37,7 @@ class Tictactoe:
         print("\n[ Tictactoe's Menu ]\n")
         print("   1) Player vs Player")
         print("   2) Player vs CPU")
-        print("   3) Show matches\n")
-        print("   4) Exit\n")
+        print("   3) Exit\n")
 
     def _play(self):
         position = 0
