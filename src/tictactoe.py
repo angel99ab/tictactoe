@@ -15,22 +15,18 @@ class Tictactoe:
 
     def start(self):
         while True:
-            try:
-                self._clear_screen()
-                self._show_menu()
-                option = int(input("Choose an option: "))
+            self._clear_screen()
+            self._show_menu()
+            option = self.choose_option()
 
-                if option == 1:
-                    self._play()
-                elif option == 2:
-                    pass
-                elif option == 3:
-                    break
-                else:
-                    print("Numbers between 1-4!")
-                    time.sleep(1.5)
-            except ValueError:
-                print("Only numbers are allowed!")
+            if option == 1:
+                self._play()
+            elif option == 2:
+                pass
+            elif option == 3:
+                break
+            else:
+                print("Numbers between 1-4!")
                 time.sleep(1.5)
 
     def _show_menu(self):
@@ -38,6 +34,13 @@ class Tictactoe:
         print("   1) Player vs Player")
         print("   2) Player vs CPU")
         print("   3) Exit\n")
+
+    def choose_option(self):
+        try:
+            return int(input("Choose an option: "))
+        except ValueError:
+            print("Only numbers are allowed!")
+            time.sleep(1.5)
 
     def _play(self):
         position = 0
